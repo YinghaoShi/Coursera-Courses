@@ -1,0 +1,101 @@
+Database Overview
+
+Yinghao Shi
+2021-Aug-07
+===
+
+Database:fun
+===
+
+Notes:
+1.
+Column and table descriptions are estimates based on examination of the tables, not descriptions from the data sources.
+===
+
+Tables:
+  card_rank     Card rank associated with values
+  card_suit     Card suit associated with colors
+  games         Games' basic information and rules
+  inventory     Look-up table with games and shops
+===
+
+Table:		card_rank
+
+Columns
+  	Name 	Type 	Comment
+1 	rank 	string 	PK
+2 	value 	tinyint integer number from 2 to 10 (including Null)
+
+Sample
+	rank    value
+1 	Ace 	NULL
+2 	2 	2
+3 	3 	3
+4 	4 	4
+5 	5 	5
+6 	6 	6
+7 	7 	7
+8 	8 	8
+9 	9 	9
+10 	10 	10
+11 	Jack 	10
+12 	Queen 	10
+13 	King 	10
+===
+
+Table:		card_suit
+
+Columns
+	Name 	Type 	Comment
+1 	suit 	string 	PK
+2 	color 	string 	"Red" or "Black"
+
+Sample
+ 	suit		color
+1 	Clubs 		Black
+2 	Diamonds 	Red
+3 	Hearts 		Red
+4 	Spades 		Black
+===
+
+Table:		games
+Columns
+ 	Name 		Type 		Comment
+1 	id 		int 		PK
+2 	name 		string 		
+3 	inventor 	string 	
+4 	year 		string 	
+5 	min_age 	tinyint 	
+6 	min_players 	tinyint 	
+7 	max_players 	tinyint 	
+8 	list_price 	decimal(5,2) 	in US dollars
+
+Sample
+ 	id	name		inventor		year	min_age	min_players	max_players	list_price
+1 	1 	Monopoly 	Elizabeth Magie 	1903 	8 	2 		6 		19.99
+2 	2 	Scrabble 	Alfred Mosher Butts 	1938 	8 	2 		4 		17.99
+3 	3 	Clue 		Anthony E. Pratt 	1944 	8 	2 		6 		9.99
+4 	4 	Candy Land 	Eleanor Abbott 		1948 	3 	2 		4 		7.99
+5 	5 	Risk 		Albert Lamorisse 	1957 	10 	2 		5 		29.99
+===
+
+Table:		inventory
+
+Column
+	Name 		Type 			Comment
+1 	shop 		string 			could be a composite key along with game
+2 	game 		string 			relates to games.name, could be a composite key along with shop
+3 	qty 		int 	
+4 	aisle 		tinyint 	
+5 	price 		decimal(5,2) 		in US dollars
+
+Sample
+ 	shop		game		qty	aisle	price
+1 	Dicey 		Monopoly 	7 	3 	17.99
+2 	Dicey 		Clue 		3 	NULL 	9.99
+3 	Board 'Em 	Monopoly 	11 	2 	25.00
+4 	Board 'Em 	Candy Land 	4 	2 	NULL
+5 	Board 'Em 	Risk 		3 	1 	35.00
+===
+===
+
